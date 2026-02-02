@@ -1,6 +1,7 @@
 name: centralized-format-uploader-v2
 code: centralized-format-uploader-v2
 version: 0.1.0
+debug: true
 category: upload
 description: COCO 포맷의 중앙 집중형 어노테이션 파일을 분할하여 이미지별 데이터유닛으로 업로드하는 플러그인
 actions:
