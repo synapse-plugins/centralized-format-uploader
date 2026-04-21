@@ -1,0 +1,11 @@
+# Files to exclude from plugin archive
+.git
+.venv
+venv
+__pycache__
+*.pyc
+.pytest_cache
+.ruff_cache
+*.egg-info
+dist
+build

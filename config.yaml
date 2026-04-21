@@ -1,0 +1,30 @@
+name: centralized-format-uploader-v2
+code: centralized-format-uploader
+version: 2.0.0
+category: upload
+description: COCO 포맷의 중앙 집중형 어노테이션 파일을 분할하여 이미지별 데이터유닛으로 업로드하는 플러그인
+actions:
+  upload:
+    entrypoint: plugin.upload.UploadAction
+    method: job
+    ui_schema:
+    - $formkit: text
+      name: group_name
+      label: 묶음 이름
+      help: 데이터 유닛에 할당할 묶음 이름을 입력하세요.
+      required: false
+  download:
+    entrypoint: .venv.lib.python3.12.site-packages.synapse_sdk.plugins.testing.sample_actions.DownloadAction
+    method: job
+  convert:
+    entrypoint: .venv.lib.python3.12.site-packages.synapse_sdk.plugins.testing.sample_actions.ConvertAction
+    method: job
+  train:
+    entrypoint: .venv.lib.python3.12.site-packages.synapse_sdk.plugins.testing.sample_actions.TrainAction
+    method: job
+  add_task_data:
+    entrypoint: .venv.lib.python3.12.site-packages.synapse_sdk.plugins.actions.add_task_data.action.AddTaskDataAction
+    method: job
+  export:
+    entrypoint: .venv.lib.python3.12.site-packages.synapse_sdk.plugins.actions.export.action.DefaultExportAction
+    method: job
