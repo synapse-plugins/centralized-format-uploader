@@ -5,6 +5,26 @@
 
 ## [Unreleased]
 
+## [2.2.4] - 2026-09-10
+
+### Changed
+- `synapse-sdk` 의존성 `2026.2.5` → `2026.2.6` 업그레이드. plugin 자체 동작 / 입출력 무변경.
+  - SDK 2026.2.6: upload 액션이 스토리지 자격증명을 **세션 경계 안에서** 받는다 (SYN-7616). 종전에는 `with_configuration` 의 평문 설정을 써서 `credential_regime` 이 `none` 이 아닌 스토리지(SMB 공용/개인 인증 등)로는 업로드가 시작조차 되지 않았다 — 이제 그런 스토리지의 경로를 원본으로 쓸 수 있다. 원본 스토리지는 읽기 스코프(`purpose=read`)로 연다.
+  - 부수: 원본·asset·Excel 메타데이터 경로를 열 때의 평문 설정 재조립이 사라졌고, `InitializeStep` 의 step 결과에서도 평문이 빠졌다.
+
+## [2.2.3] - 2026-09-09
+
+### Changed
+- `synapse-sdk` 의존성 `2026.2.4` → `2026.2.5` 업그레이드. plugin 자체 동작 / 입출력 무변경.
+  - SDK 2026.2.5: v1 `Storage.provider` 를 열린 계약(`str`)으로 바꿔 backend 가 새로 추가한 provider 코드(`smb` 등)를 응답 모델이 거부하지 않는다 (SYN-7613). 종전에는 `initialize` 단계에서 `1 validation error for Storage / provider` 로 즉시 실패했다. 더불어 `Storage.configuration` 미선언 키에 경고를 달아 유실 관측성을 확보했다 (SYN-7581).
+  - upload 액션의 스토리지 획득 경로는 무변경이다 — `credential_regime` 이 `none` 이 아닌 스토리지(예: SMB 공용 인증)는 자격증명을 받지 못해 여전히 사용할 수 없다 (SYN-7614 후속 대상).
+
+## [2.2.2] - 2026-09-09
+
+### Changed
+- `synapse-sdk` 의존성 `2026.1.174` → `2026.2.4` 업그레이드. plugin 자체 동작 / 입출력 무변경.
+  - SDK 2026.2.4: Synology API error 119 재로그인에 1회 상한을 두고, 새 SID도 거부되면 `SynologySessionRefreshError`로 명시적으로 실패한다.
+
 ### Added
 ### Changed
 ### Fixed
