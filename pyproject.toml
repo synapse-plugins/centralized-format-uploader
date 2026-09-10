@@ -1,6 +1,6 @@
 [project]
 name = "centralized-format-uploader"
-version = "0.1.0"
+version = "2.2.4"
 description = "centralized-format-uploader plugin"
 requires-python = ">=3.10"
 dependencies = [
