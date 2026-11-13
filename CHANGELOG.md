@@ -5,6 +5,13 @@
 
 ## [Unreleased]
 
+## [2.2.7] - 2026-11-13
+
+### Fixed
+- Ray 2.59.1 클러스터에서 실행 직후 실패하던 문제를 고친다. `synapse-sdk[all]==2026.2.10` 의 `[all]` extra 가 `ray[all]==2.50.0` 을 함께 설치하려 해 Ray 가 runtime env 생성 단계에서 `Changing the ray version is not allowed` 로 job 을 거부했다.
+  - `requirements.txt` 를 `synapse-sdk==2026.2.10` 으로 바꾸고, `[all]` 중 업로드 경로가 실제로 쓰는 `openpyxl>=3.1.0`(Excel 메타데이터)만 명시한다. Ray 는 워커 이미지의 것을 쓰므로 Ray 2.50 · 2.59 클러스터 모두에서 동작한다.
+  - SDK 버전은 그대로라 plugin 동작 변화는 없다.
+
 ## [2.2.6] - 2026-09-23
 
 ### Fixed
